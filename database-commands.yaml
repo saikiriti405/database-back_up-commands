@@ -1,0 +1,17 @@
+these command is useful for copying file or folder from pod to local system :
+kubectl cp -n mf mainflux-influxdb-78488878cd-rpjbb:/usr/textfile  ./downloads/homework
+these command is useful for copying file or folder from local  system to pod :
+kubectl cp  homework mainflux-influxdb-78488878cd-rpjbb:/usr/ -n mf
+commands for postgresql  data base back_up
+1. pg_dump -U postgres postgres
+2. pg_dump -d users -h localhost -U postgres --file=/opt/bitnami/test.sql
+3.  psql -d sai -U postgres < test.sql
+4. kubectl cp -n mf mainflux-postgresqlusers-0:/opt/bitnami/text.sql ./downloads/databases
+5. kubectl cp -n mf mainflux-postgresqlusers-0:opt/bitnami/test.sql ./downloads/vijay/vijay.sql
+commands for influxdb database back_up
+1. influxd backup  -database mainflux    /tmp/mainfluxdb.backup
+2. cp -rp mainfluxdb.backup/* /opt/bitnami
+3. influxd config
+4. influxd restore  -database mydb  -metadir  "/.influxdb/meta" -datadir    "/.influxdb/data" ./opt/bitnami/mainfluxdb.backup
+5. influxd restore -database mydb  -datadir "/.influxdb/data" /opt/bitnami/
+6. kubectl cp -n mf mainflux-influxdb-78488878cd-rpjbb:/tmp/mainfluxdb.backup   ./downloads/databases
